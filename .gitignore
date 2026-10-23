@@ -1,0 +1,4 @@
+engine/
+results/run/
+*.pyc
+__pycache__/

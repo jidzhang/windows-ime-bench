@@ -1,0 +1,30 @@
+﻿==== full bench [offline] start 2026-10-23 08:11:55 online=False
+---- microsoft_pinyin sentences 08:11:55 online=False
+---- microsoft_pinyin words 08:15:09 online=False
+---- sogou_pinyin sentences 08:22:00 online=False
+---- sogou_pinyin words 08:25:11 online=False
+---- wechat_pinyin sentences 08:31:59 online=False
+---- wechat_pinyin words 08:36:40 online=False
+---- baidu_pinyin sentences 08:45:04 online=False
+---- baidu_pinyin words 08:49:30 online=False
+---- iflytek_pinyin sentences 08:56:32 online=False
+---- iflytek_pinyin words 09:00:43 online=False
+---- qq_pinyin sentences 09:08:36 online=False
+---- qq_pinyin words 09:13:02 online=False
+---- google_pinyin sentences 09:19:54 online=False
+---- google_pinyin words 09:23:09 online=False
+---- doubao_pinyin sentences 09:30:25 online=False
+---- doubao_pinyin words 09:33:29 online=False
+---- qianwen_pinyin sentences 09:40:19 online=False
+---- qianwen_pinyin words 09:46:27 online=False
+---- suyan_pinyin sentences 09:53:23 online=False
+---- suyan_pinyin words 09:57:49 online=False
+---- shuishan_pinyin sentences 10:04:45 online=False
+---- shuishan_pinyin words 10:09:10 online=False
+---- moqi_pinyin sentences 10:16:04 online=False
+---- moqi_pinyin words 10:20:28 online=False
+---- shouxin_pinyin sentences 10:27:20 online=False
+---- shouxin_pinyin words 10:31:02 online=False
+---- windinput_pinyin sentences 10:40:04 online=False
+---- windinput_pinyin words 10:44:31 online=False
+==== full bench [offline] done 10:51:22
