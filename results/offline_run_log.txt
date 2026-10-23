@@ -28,3 +28,8 @@
 ---- windinput_pinyin sentences 10:40:04 online=False
 ---- windinput_pinyin words 10:44:31 online=False
 ==== full bench [offline] done 10:51:22
+
+==== qingjian offline bench start 2026-10-23 17:09:46 online=False
+---- qingjian sentences 17:09:46
+---- qingjian words 17:12:44
+==== qingjian offline bench done 17:19:24

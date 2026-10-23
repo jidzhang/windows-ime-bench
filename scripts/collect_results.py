@@ -17,6 +17,8 @@ for kind, sub in (("sentences", "sentences"), ("words", "words")):
         if i < 0:
             i = s.find("【Overall】")
         if i < 0:
+            i = s.find("【总体】")
+        if i < 0:
             continue
         m = re.search(r"benchmark_(\w+?)_(?:zhihu120|words234)_", f)
         if not m:

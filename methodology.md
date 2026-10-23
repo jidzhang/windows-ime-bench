@@ -29,10 +29,13 @@ rime-schema-compare 的黑盒引擎用 TSF `ActivateTipProfile` 切换输入法�
 状态完成前会拒绝——我们 fork 的引擎加了 Win+空格 与 Ctrl+Shift 循环兜底；个别
 输入法仍需先用系统快捷键手动切换一次（或启动一次其设置程序）完成初始化。
 素言输入法默认英文直通模式，需在其 UI 手动开启中文模式后才可测。
+青简安装后未自动出现在 `Get-WinUserLanguageList`（Windows 10 语言列表未同步），
+引擎改为从 CTF TIP 注册表补登已注册配置；青简若处于英文模式，自检时按一次
+Shift 切回中文。
 
 ## 断网测试
 
-断开网络（拔线/关路由/飞行模式均可，由用户自行控制）后运行 scriptsun.bat，
+断开网络（拔线/关路由/飞行模式均可，由用户自行控制）后运行 scripts\run.bat，
 起个 offline 之类的名字。脚本在开始时探测一次网络状态（True/False）写入日志，
 之后不再探测，也不修改任何网络设置。
 
