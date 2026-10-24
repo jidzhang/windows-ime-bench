@@ -10,7 +10,7 @@ set ROOT=%~dp0..
 set ENGINE=%ROOT%\engine\rime-schema-compare
 
 rem ===== EDIT ME: IME list to test (keys must match installed TIPs) =====
-set IMES=microsoft_pinyin sogou_pinyin wechat_pinyin baidu_pinyin iflytek_pinyin qq_pinyin google_pinyin doubao_pinyin qianwen_pinyin suyan_pinyin shuishan_pinyin moqi_pinyin shouxin_pinyin windinput_pinyin qingjian_pinyin
+set IMES=microsoft_pinyin sogou_pinyin wechat_pinyin baidu_pinyin iflytek_pinyin qq_pinyin google_pinyin doubao_pinyin qianwen_pinyin suyan_pinyin shuishan_pinyin moqi_pinyin shouxin_pinyin windinput_pinyin ximeyao_pinyin
 rem =======================================================================
 
 set LABEL=%1
@@ -27,6 +27,19 @@ ping -n 1 -w 2000 223.5.5.5 >nul 2>&1
 if %ERRORLEVEL%==0 (set NET0=True) else (set NET0=False)
 echo ==== full bench [%LABEL%] start %DATE% %TIME% online=%NET0% >> "%LOG%"
 
+rem Preflight: drop IMEs not installed/enabled so one missing IME cannot
+rem abort the whole run. Full list kept in %OUTROOT%\preflight.txt.
+python scripts\preflight_imes.py %IMES% > "%OUTROOT%\preflight.txt"
+type "%OUTROOT%\preflight.txt"
+set NEWIMES=
+for /f "tokens=1* delims==" %%A in ('findstr /B "OK_IMES=" "%OUTROOT%\preflight.txt"') do set NEWIMES=%%B
+if "%NEWIMES%"=="" (
+    echo [ABORT] none of the requested IMEs is enabled in the Windows language list. Nothing to test.
+    echo ==== full bench [%LABEL%] aborted: no IME enabled %DATE% %TIME% >> "%LOG%"
+    exit /b 1
+)
+set IMES=%NEWIMES%
+
 for %%I in (%IMES%) do call :bench %%I
 
 python "%ROOT%\scripts\collect_results.py" "%ROOT%" %LABEL%
@@ -41,9 +54,9 @@ set IME=%1
 rem --- sentences ---
 echo ---- %IME% sentences %TIME% >> "%LOG%"
 python -c "import sys; sys.path.insert(0,'src'); from rime_schema_compare.ms_pinyin_harness import WindowsImeSwitcher; WindowsImeSwitcher().activate_profile('%IME%')" >nul 2>&1
-python scripts\benchmark_windows_pinyin.py --ime %IME% --corpus data\corpus\zhihu120.txt --out-dir "%OUTROOT%\sentences" 2>&1 | findstr /C:"not_confirmed" >> "%LOG%"
+python scripts\benchmark_windows_pinyin.py --ime %IME% --corpus data\corpus\zhihu120.txt --out-dir "%OUTROOT%\sentences" 2>&1 | findstr /C:"not_confirmed" /C:"[RESULT]" /C:"[ABORT]" /C:"[SKIP]" >> "%LOG%"
 rem --- words ---
 echo ---- %IME% words %TIME% >> "%LOG%"
 python -c "import sys; sys.path.insert(0,'src'); from rime_schema_compare.ms_pinyin_harness import WindowsImeSwitcher; WindowsImeSwitcher().activate_profile('%IME%')" >nul 2>&1
-python scripts\benchmark_windows_pinyin.py --ime %IME% --corpus data\corpus\words234.txt --min-hanzi 2 --out-dir "%OUTROOT%\words" 2>&1 | findstr /C:"not_confirmed" >> "%LOG%"
+python scripts\benchmark_windows_pinyin.py --ime %IME% --corpus data\corpus\words234.txt --min-hanzi 2 --out-dir "%OUTROOT%\words" 2>&1 | findstr /C:"not_confirmed" /C:"[RESULT]" /C:"[ABORT]" /C:"[SKIP]" >> "%LOG%"
 goto :eof
