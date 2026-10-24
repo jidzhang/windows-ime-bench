@@ -31,7 +31,13 @@ rime-schema-compare 的黑盒引擎用 TSF `ActivateTipProfile` 切换输入法�
 素言输入法默认英文直通模式，需在其 UI 手动开启中文模式后才可测。
 青简安装后未自动出现在 `Get-WinUserLanguageList`（Windows 10 语言列表未同步），
 引擎改为从 CTF TIP 注册表补登已注册配置；青简若处于英文模式，自检时按一次
-Shift 切回中文。
+Shift 切回中文。老式 IME（键盘布局 KLID 注册、TSF 零 GUID，如华宇 V6.9）由引擎
+按 `LoadKeyboardLayout` 激活并以 HKL 确认，新增此类输入法同样只改 imes.json。
+
+## 成绩版本管理
+
+成绩只对应**当前语料与方法**；更换测试集或方法时另出新版报告，旧版随 git
+历史归档，不按日期滚动更新。
 
 ## 断网测试
 
