@@ -34,11 +34,6 @@ rime-schema-compare 的黑盒引擎用 TSF `ActivateTipProfile` 切换输入法�
 Shift 切回中文。老式 IME（键盘布局 KLID 注册、TSF 零 GUID，如华宇 V6.9）由引擎
 按 `LoadKeyboardLayout` 激活并以 HKL 确认，新增此类输入法同样只改 imes.json。
 
-## 成绩版本管理
-
-成绩只对应**当前语料与方法**；更换测试集或方法时另出新版报告，旧版随 git
-历史归档，不按日期滚动更新。
-
 ## 断网测试
 
 断开网络（拔线/关路由/飞行模式均可，由用户自行控制）后运行 scripts\run.bat，
