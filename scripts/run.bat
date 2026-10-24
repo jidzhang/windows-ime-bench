@@ -10,7 +10,7 @@ set ROOT=%~dp0..
 set ENGINE=%ROOT%\engine\rime-schema-compare
 
 rem ===== EDIT ME: IME list to test (keys must match installed TIPs) =====
-set IMES=microsoft_pinyin sogou_pinyin wechat_pinyin baidu_pinyin iflytek_pinyin qq_pinyin google_pinyin doubao_pinyin qianwen_pinyin suyan_pinyin shuishan_pinyin moqi_pinyin shouxin_pinyin windinput_pinyin ximeyao_pinyin
+set IMES=microsoft_pinyin sogou_pinyin wechat_pinyin baidu_pinyin iflytek_pinyin qq_pinyin google_pinyin doubao_pinyin qianwen_pinyin suyan_pinyin shuishan_pinyin moqi_pinyin shouxin_pinyin windinput_pinyin ximeyao_pinyin qingjian_pinyin
 rem =======================================================================
 
 set LABEL=%1

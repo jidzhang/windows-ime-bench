@@ -7,6 +7,7 @@
 - microsoft_pinyin: 55.83%
 - moqi_pinyin: 55.83%
 - huayu_pinyin: 52.50%
+- qingjian_pinyin: 48.33%
 - ximeyao_pinyin: 40.00%
 - iflytek_pinyin: 38.33%
 - sogou_pinyin: 30.00%
@@ -19,5 +20,6 @@
 - iflytek_pinyin: 99.56%
 - moqi_pinyin: 99.56%
 - ximeyao_pinyin: 99.56%
+- qingjian_pinyin: 98.67%
 - sogou_pinyin: 98.67%
 - qq_pinyin: 98.22%
