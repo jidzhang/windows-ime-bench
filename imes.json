@@ -2,6 +2,6 @@
   "_comment": "新增输入法在这里加一行即可，无需改引擎代码：key 任意（run.bat 清单里用它），patterns 匹配注册表/语言列表里的输入法描述（不区分大小写的子串），display 是报告里显示的名字。未安装的会自动跳过。",
   "huayu_pinyin": {
     "patterns": ["华宇"],
-    "display": "华宇输入法"
+    "display": "华宇拼音输入法V6.9"
   }
 }
