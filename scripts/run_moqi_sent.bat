@@ -38,11 +38,20 @@ for %%I in (%IMES%) do call :bench %%I
 echo ==== moqi sentence-only bench [%LABEL%] done %DATE% %TIME% >> "%LOG%"
 echo.
 echo ===================== RESULTS (this run) =====================
-rem The log appends across runs with the same label; show only the LAST
-rem [RESULT] line of this invocation (it is the final line of the file).
-for /f "usebackq delims=" %%L in ("%LOG%") do set "LASTLINE=%%L"
-echo %LASTLINE%
+rem Show the LAST [RESULT] line in the log (= this run; earlier ones are
+rem history from previous runs with the same label).
+set "LASTRESULT=[no RESULT line - check run log for abort]"
+for /f "usebackq delims=" %%L in (`findstr /C:"[RESULT]" "%LOG%"`) do set "LASTRESULT=%%L"
+echo %LASTRESULT%
+rem Per-run artifact (do NOT reuse collect_results.py: it takes the max
+rem across all reports in the dir, which would mix in stale words/old runs).
+set "SUMMARY=%ROOT%\results\summary_%LABEL%_sent.md"
+> "%SUMMARY%" echo # Sentence-only summary [%LABEL%]
+>> "%SUMMARY%" echo run finished: %DATE% %TIME%
+>> "%SUMMARY%" echo.
+>> "%SUMMARY%" echo %LASTRESULT%
 echo ==================================================
+echo This run:    %SUMMARY%
 echo Full history: %LOG%
 echo ==================================================
 pause
