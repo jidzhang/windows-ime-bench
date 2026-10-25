@@ -42,7 +42,8 @@ rem Show the LAST [RESULT] line in the log (= this run; earlier ones are
 rem history from previous runs with the same label).
 rem Print this run's score as a percentage and write the per-run summary
 rem (helper does both; batch token-splitting is fragile, keep it out of cmd).
-python scripts\print_last_score.py "%LOG%" "%ROOT%\results\summary_%LABEL%_sent.md" %LABEL%
+rem NOTE: cwd is the ENGINE dir here; the helper lives next to this .bat.
+python "%~dp0print_last_score.py" "%LOG%" "%ROOT%\results\summary_%LABEL%_sent.md" %LABEL%
 echo ==================================================
 echo This run:    %ROOT%\results\summary_%LABEL%_sent.md
 echo Full history: %LOG%
