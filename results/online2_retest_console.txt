@@ -1,0 +1,11 @@
+---- qianwen_pinyin sentences retest 21:37:09.44
+[RESULT] ime=qianwen_pinyin corpus=zhihu120 typed=0 total=120 exact=0 aborted=no error=host_focus_lost (could not bring the Notepad host to the foreground; synthetic keys would go nowhere â€” log in at the console / click once, then rerun)
+---- google_pinyin sentences retest 21:37:23.69
+[RESULT] ime=google_pinyin corpus=zhihu120 typed=0 total=120 exact=0 aborted=no error=host_focus_lost (could not bring the Notepad host to the foreground; synthetic keys would go nowhere â€” log in at the console / click once, then rerun)
+---- huayu_pinyin sentences retest 21:37:36.84
+[RESULT] ime=huayu_pinyin corpus=zhihu120 typed=0 total=120 exact=0 aborted=no error=host_focus_lost (could not bring the Notepad host to the foreground; synthetic keys would go nowhere â€” log in at the console / click once, then rerun)
+---- google_pinyin words retest 21:37:44.87
+[RESULT] ime=google_pinyin corpus=words234 typed=0 total=450 exact=0 aborted=no error=host_focus_lost (could not bring the Notepad host to the foreground; synthetic keys would go nowhere â€” log in at the console / click once, then rerun)
+---- huayu_pinyin words retest 21:37:55.02
+[RESULT] ime=huayu_pinyin corpus=words234 typed=0 total=450 exact=0 aborted=no error=host_focus_lost (could not bring the Notepad host to the foreground; synthetic keys would go nowhere â€” log in at the console / click once, then rerun)
+---- retest done 2026/10/25 ÖÜÈÕ 21:38:03.52

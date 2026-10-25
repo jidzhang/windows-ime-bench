@@ -1,0 +1,5 @@
+---- sogou_pinyin sentences retest 21:56:11.94
+[RESULT] ime=sogou_pinyin corpus=zhihu120 typed=120 total=120 exact=66 aborted=no
+---- sogou_pinyin words retest 21:59:11.20
+[RESULT] ime=sogou_pinyin corpus=words234 typed=450 total=450 exact=448 aborted=no
+---- sogou retest done 2026/10/25 ÷‹»’ 22:05:52.42

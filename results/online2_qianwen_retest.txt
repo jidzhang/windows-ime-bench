@@ -1,0 +1,3 @@
+---- qianwen_pinyin sentences retest 22:09:15.14
+[RESULT] ime=qianwen_pinyin corpus=zhihu120 typed=120 total=120 exact=72 aborted=no
+---- qianwen retest done 2026/10/25 ÷‹»’ 22:13:25.69
