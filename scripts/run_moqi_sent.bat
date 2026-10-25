@@ -37,10 +37,13 @@ for %%I in (%IMES%) do call :bench %%I
 
 echo ==== moqi sentence-only bench [%LABEL%] done %DATE% %TIME% >> "%LOG%"
 echo.
-echo ===================== RESULTS =====================
-findstr /C:"[RESULT]" "%LOG%"
+echo ===================== RESULTS (this run) =====================
+rem The log appends across runs with the same label; show only the LAST
+rem [RESULT] line of this invocation (it is the final line of the file).
+for /f "usebackq delims=" %%L in ("%LOG%") do set "LASTLINE=%%L"
+echo %LASTLINE%
 echo ==================================================
-echo Full run log: %LOG%
+echo Full history: %LOG%
 echo ==================================================
 pause
 endlocal
