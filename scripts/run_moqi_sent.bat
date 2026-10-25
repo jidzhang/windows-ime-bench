@@ -40,18 +40,11 @@ echo.
 echo ===================== RESULTS (this run) =====================
 rem Show the LAST [RESULT] line in the log (= this run; earlier ones are
 rem history from previous runs with the same label).
-set "LASTRESULT=[no RESULT line - check run log for abort]"
-for /f "usebackq delims=" %%L in (`findstr /C:"[RESULT]" "%LOG%"`) do set "LASTRESULT=%%L"
-echo %LASTRESULT%
-rem Per-run artifact (do NOT reuse collect_results.py: it takes the max
-rem across all reports in the dir, which would mix in stale words/old runs).
-set "SUMMARY=%ROOT%\results\summary_%LABEL%_sent.md"
-> "%SUMMARY%" echo # Sentence-only summary [%LABEL%]
->> "%SUMMARY%" echo run finished: %DATE% %TIME%
->> "%SUMMARY%" echo.
->> "%SUMMARY%" echo %LASTRESULT%
+rem Print this run's score as a percentage and write the per-run summary
+rem (helper does both; batch token-splitting is fragile, keep it out of cmd).
+python scripts\print_last_score.py "%LOG%" "%ROOT%\results\summary_%LABEL%_sent.md" %LABEL%
 echo ==================================================
-echo This run:    %SUMMARY%
+echo This run:    %ROOT%\results\summary_%LABEL%_sent.md
 echo Full history: %LOG%
 echo ==================================================
 pause
