@@ -6,7 +6,9 @@ set ROOT=%~dp0..
 set ENGINE=%ROOT%\engine\rime-schema-compare
 
 if exist "%ENGINE%\.git" (
-    echo [1/3] engine already present, reuse
+    echo [1/3] engine already present, updating ...
+    git -C "%ENGINE%" pull --ff-only
+    if not %ERRORLEVEL%==0 echo [WARN] engine update failed, check network/proxy; continuing with current copy
     goto corpora
 )
 

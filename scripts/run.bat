@@ -29,6 +29,12 @@ echo ==== full bench [%LABEL%] start %DATE% %TIME% online=%NET0% >> "%LOG%"
 
 rem Preflight: drop IMEs not installed/enabled so one missing IME cannot
 rem abort the whole run. Full list kept in %OUTROOT%\preflight.txt.
+if not exist "%ENGINE%\scripts\preflight_imes.py" (
+    echo [ABORT] test engine is outdated ^(preflight_imes.py missing^).
+    echo Fix: run scripts\setup.bat again \(it updates the engine\), or manually:
+    echo     git -C engine\rime-schema-compare pull
+    exit /b 1
+)
 python scripts\preflight_imes.py --extra-imes="%ROOT%\imes.json" %IMES% > "%OUTROOT%\preflight.txt"
 type "%OUTROOT%\preflight.txt"
 set NEWIMES=
