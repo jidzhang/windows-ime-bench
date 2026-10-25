@@ -10,7 +10,7 @@ set ROOT=%~dp0..
 set ENGINE=%ROOT%\engine\rime-schema-compare
 
 rem ===== EDIT ME: IME list to test (keys must match installed TIPs) =====
-set IMES=microsoft_pinyin sogou_pinyin wechat_pinyin baidu_pinyin iflytek_pinyin qq_pinyin google_pinyin doubao_pinyin qianwen_pinyin suyan_pinyin shuishan_pinyin moqi_pinyin shouxin_pinyin windinput_pinyin ximeyao_pinyin qingjian_pinyin
+set IMES=microsoft_pinyin sogou_pinyin wechat_pinyin baidu_pinyin iflytek_pinyin qq_pinyin google_pinyin doubao_pinyin qianwen_pinyin suyan_pinyin shuishan_pinyin moqi_pinyin shouxin_pinyin windinput_pinyin ximeyao_pinyin qingjian_pinyin huayu_pinyin
 rem =======================================================================
 
 set LABEL=%1
@@ -31,7 +31,7 @@ rem Preflight: drop IMEs not installed/enabled so one missing IME cannot
 rem abort the whole run. Full list kept in %OUTROOT%\preflight.txt.
 if not exist "%ENGINE%\scripts\preflight_imes.py" (
     echo [ABORT] test engine is outdated ^(preflight_imes.py missing^).
-    echo Fix: run scripts\setup.bat again \(it updates the engine\), or manually:
+    echo Fix: run scripts\setup.bat again ^(it updates the engine^), or manually:
     echo     git -C engine\rime-schema-compare pull
     pause
     exit /b 1
