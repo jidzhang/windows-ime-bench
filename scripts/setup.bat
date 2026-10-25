@@ -21,6 +21,7 @@ git clone --depth 1 https://github.com/jidzhang/rime-schema-compare "%ENGINE%"
 if %ERRORLEVEL%==0 goto corpora
 if %ATTEMPT% GEQ 3 (
     echo clone failed after 3 attempts, check network/proxy
+    pause
     exit /b 1
 )
 echo attempt %ATTEMPT% failed, retry in 5s ...
@@ -39,4 +40,6 @@ python -m pip install -q pypinyin python-dotenv
 
 echo.
 echo Setup done. Next: edit scripts\run.bat (IME list at top), then double-click it.
+echo Repository folder: %ROOT%
+pause
 endlocal

@@ -33,6 +33,7 @@ if not exist "%ENGINE%\scripts\preflight_imes.py" (
     echo [ABORT] test engine is outdated ^(preflight_imes.py missing^).
     echo Fix: run scripts\setup.bat again \(it updates the engine\), or manually:
     echo     git -C engine\rime-schema-compare pull
+    pause
     exit /b 1
 )
 python scripts\preflight_imes.py --extra-imes="%ROOT%\imes.json" %IMES% > "%OUTROOT%\preflight.txt"
@@ -42,6 +43,7 @@ for /f "tokens=1* delims==" %%A in ('findstr /B "OK_IMES=" "%OUTROOT%\preflight.
 if "%NEWIMES%"=="" (
     echo [ABORT] none of the requested IMEs is enabled in the Windows language list. Nothing to test.
     echo ==== full bench [%LABEL%] aborted: no IME enabled %DATE% %TIME% >> "%LOG%"
+    pause
     exit /b 1
 )
 set IMES=%NEWIMES%
@@ -51,7 +53,15 @@ for %%I in (%IMES%) do call :bench %%I
 python "%ROOT%\scripts\collect_results.py" "%ROOT%" %LABEL%
 echo ==== full bench [%LABEL%] done %DATE% %TIME% >> "%LOG%"
 echo.
-echo Done. Results: results\run\%LABEL%\ and results\summary_%LABEL%.md
+echo ===================== RESULTS =====================
+type "%ROOT%\results\summary_%LABEL%.md"
+echo.
+echo ===================================================
+echo Score summary ^(open this file^):  %ROOT%\results\summary_%LABEL%.md
+echo Per-IME raw results:               %OUTROOT%\sentences   %OUTROOT%\words
+echo Run log:                           %OUTROOT%\run_log.txt
+echo ===================================================
+pause
 endlocal
 exit /b 0
 
