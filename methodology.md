@@ -47,3 +47,9 @@ Shift 切回中文。老式 IME（键盘布局 KLID 注册、TSF 零 GUID，如�
    复测一致，已尽量控制）；
 3. 单机环境：系统版本、TSF 状态、字体渲染均可能影响；
 4. 语料风格：zhihu120 为口语问答体，难度高于新闻体；不同语料分数不可直接比较。
+
+## 白盒补充口径（Rime 系方案）
+
+Rime 体系方案另走 librime 进程内白盒（零用户词库/零云/逐句确定性；读音以
+`corpus/<stem>.pin.tsv` gold sidecar 冻结，vendor 词库交叉审计），与本黑盒口径
+互不通用、分数不可互比。详见 `results/whitebox_rime_report.md`。

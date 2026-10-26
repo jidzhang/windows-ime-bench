@@ -72,8 +72,9 @@
 
 详见独立报告 `results/whitebox_rime_report.md` 与
 `engine/rime-schema-compare/report/whitebox_2026-10-26.md`。
-- 追加 A/B（同日）：万象挂 `wanxiang-lts-zh-hans.gram` 后整句 46.67%→59.17%
-  （+12.5，超各家裸配；词级不变）。裸配口径公平性与"万象裸词库弱"结论不变。
+- 追加 A/B（同日，读音修正后口径）：万象挂 `wanxiang-lts-zh-hans.gram` 后整句
+  48.33%→60.00%（+11.7，仍不及白霜挂同款模型的 65.83%；词级不变）——万象整句
+  能力押在模型上，裸词库偏弱。
 - 追加二（同日）：全表挂同一 wanxiang-lts gram——白霜 65.83 > 雾凇=薄荷
   60.83 > 万象 60.00 > 明月 48.33，与裸配排序同构；明月 +gram 词级反降 0.45
   （整句模型短词副作用）。各口径两轮 0 diff。
