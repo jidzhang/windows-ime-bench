@@ -119,3 +119,11 @@ Windows 语言列表里显示名称的子串，display 是报告里的名字）�
   是 [gaboolic/rime-schema-compare](https://github.com/gaboolic/rime-schema-compare)
   的 fork（上游仓库未附许可证，版权归上游作者；fork 仅在 GitHub 平台条款下
   公开，含本项目的引擎修改，已在提交说明中标注）。
+
+## 墨奇 vs 小狼毫：产品级四臂对比（2026-10-26）
+
+黑盒真机四臂（同机同语料同读音 sidecar、逐臂重置取证）：
+小狼毫默认（明月）41.67 → +白霜 55.83 → +挂 gram **65.83**；
+墨奇 1.6.1 成品 **62.50**。墨奇成品胜开箱小狼毫 +20.8 点，但优势全部来自
+"默认挂模型+白霜系词库"的工程化打包——小狼毫武装到同配置即追平（CI 内），
+墨奇定制层在本语料无净增益。详见 `results/fwm_product_compare.md`。

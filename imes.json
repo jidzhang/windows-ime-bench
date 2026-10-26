@@ -1,11 +1,25 @@
 {
   "_comment": "新增输入法在这里加一行即可，无需改引擎代码：key 任意（run.bat 清单里用它），patterns 匹配注册表/语言列表里的输入法描述（不区分大小写的子串），display 是报告里显示的名字。未安装的会自动跳过。同名 key 会覆盖引擎内置的匹配模式。",
   "huayu_pinyin": {
-    "patterns": ["华宇"],
+    "patterns": [
+      "华宇"
+    ],
     "display": "华宇拼音输入法V6.9"
   },
   "moqi_pinyin": {
-    "patterns": ["墨奇", "moqi", "中州韵"],
+    "patterns": [
+      "墨奇",
+      "moqi",
+      "中州韵"
+    ],
     "display": "墨奇输入法"
+  },
+  "weasel_rime": {
+    "patterns": [
+      "小狼毫",
+      "Weasel",
+      "weasel"
+    ],
+    "display": "小狼毫0.17.4"
   }
 }
