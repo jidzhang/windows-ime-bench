@@ -59,3 +59,20 @@ gram 路径仍是两引擎唯一可见分歧面（与此前白盒 A/B 结论一�
 `matrix_memprobe.py`；产物 `artifacts_matrix/`（16 目录，~6MB）；双轮确定性
 8/8 格 0 diff；语料 sha256 `a7599698…`/`18ed321b…`；zh-moqi.gram 删除记录见
 本轮会话（vendor/rime-frost{,_with_gram} 两处，build 同步重置）。
+
+## 附：自训模型终审（2026-10-26 深夜追加；判据=只测自训模型）
+
+用户判据更新：万象/essay 臂全部停用，唯一评估对象为自训新模型
+`zh-newmoqi.gram`（12.7MB，sha256 `8d4f7acf…`；11 源训练=知乎域 3466 句×30 +
+news/leipzig×2 + subs/ted/wiki×7，205 万字符级搭配签名；管线全链路入库
+`engine/rime-schema-compare/scripts/gram/`，octagram 源码+工具+词典+重写 convert）。
+
+| zhihu120 整句 | 词级 words234 |
+|---|---|
+| 裸霜 55.00（66/120）→ 霜+zh-newmoqi **58.33（70/120，+3.33）** | 100% → 100%（零回归） |
+
+- char 90.82→91.95；双轮确定性 0 diff；双引擎（小狼毫/墨奇）逐位一致；
+- **判据通过：自训模型有作用（+3.3，词级零回归）——按用户标准继续**；
+- 历史对照（不再复测，仅存档）：zh-moqi 小 gram d5 +3.49 但词级无益被移除；
+  essay-bgw +4.16；万象 lts +10.83。本次首次验证"知乎域加权作为轻量补充层"有效
+  （历史上整模型替换式域适配失败）。
