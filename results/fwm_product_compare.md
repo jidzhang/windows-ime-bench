@@ -34,9 +34,13 @@ network=True）：
 ## 口径备注
 
 - 黑盒含轮内边测边学（四臂均等）；每臂单轮，整句 95%CI≈±9、词级≈±4；
-- D 臂 gram 为 wanxiang-lts-zh-hans.gram（sha256 `1849e5e4…`）；C 臂模型为墨奇自带
-  （zh-moqi.gram 等，reset 保留、默认启用），两臂模型非同一文件——若墨奇换挂
-  wanxiang-lts 或有小幅变化，属后续可验证项；
+- **模型变量已受控确认（事后取证）**：C/D 两臂 gram 为**逐字节同一文件**
+  `wanxiang-lts-zh-hans.gram`（sha256 `1849e5e4…`；墨奇 patch 即声明
+  `grammar/language: wanxiang-lts-zh-hans`，其 data/ 内置一份相同文件；zh-moqi.gram
+  为未默认挂载的 7MB 实验模型）；C 臂 gram 实际加载经输出聚类验证——其 120 句
+  预测与 D 臂（霜+gram）一致 98 句、与 B 臂（裸霜）仅 81 句，形态明确属于挂模型组；
+- 墨奇 patch 的解码参数（sentence_quality_boost -2 / transpose / non_collocation_penalty 0 /
+  简拼等）在本语料的净效应 ≈ −3.3 点（±9 CI 内，统计并列）；
 - C 臂 62.50 高于历史表 57.50：历史轮输入含"尼泊尔 po"错音（3 句全员判错），本轮
   读音已修正，且本轮为重置后单轮，口径以本报告为准；
 - 白盒同配置对照：白霜+gram 白盒 65.83 / 黑盒 65.83——两口径在此点重合（巧合但自洽）。
