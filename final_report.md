@@ -70,7 +70,7 @@
 - 可重复性：整句 600 行、词级 2250 行两轮逐句 0 差异；万象倒序复跑 120/120 一致；
 - 效率：首跑（含部署）98 s、复跑 41 s，对比黑盒单方案约 15 分钟。
 
-详见 `results/summary_whitebox_rime.md` 与
+详见独立报告 `results/whitebox_rime_report.md` 与
 `engine/rime-schema-compare/report/whitebox_2026-10-26.md`。
 - 追加 A/B（同日）：万象挂 `wanxiang-lts-zh-hans.gram` 后整句 46.67%→59.17%
   （+12.5，超各家裸配；词级不变）。裸配口径公平性与"万象裸词库弱"结论不变。
