@@ -72,3 +72,5 @@
 
 详见 `results/summary_whitebox_rime.md` 与
 `engine/rime-schema-compare/report/whitebox_2026-10-26.md`。
+- 追加 A/B（同日）：万象挂 `wanxiang-lts-zh-hans.gram` 后整句 46.67%→59.17%
+  （+12.5，超各家裸配；词级不变）。裸配口径公平性与"万象裸词库弱"结论不变。
