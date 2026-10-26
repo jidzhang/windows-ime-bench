@@ -79,8 +79,11 @@ for /d %%V in ("C:\Program Files (x86)\SogouInput\1*") do (
     del /f /q "%%V\sgim_bigram_serdata.bin.*" >nul 2>&1
 )
 rd /s /q "%LL%\SogouPY.users" >nul 2>&1
-rem shared engine/cloud cache dir, never cleaned by uninstaller, fully rebuilt on demand
-rd /s /q "%ProgramData%\SogouInput" >nul 2>&1
+rem 2026-10-26: KEEP ProgramData\SogouInput. It holds the shared engine base
+rem dicts that even a fresh reinstall keeps (uninstaller never cleans it).
+rem After wiping, Sogou does NOT rebuild it (only a ~400KB skeleton comes
+rem back) and sentence accuracy drops ~20 pts (fake-low 35% vs true 55%).
+rem rem rd /s /q "%ProgramData%\SogouInput" >nul 2>&1
 
 echo   [03] WeType / WeChat Pinyin ...
 rd /s /q "%LL%\Tencent\WeType\DictDir2\v5" >nul 2>&1
