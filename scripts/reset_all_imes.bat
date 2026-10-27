@@ -32,7 +32,11 @@ for %%P in (
     qingjian-server.exe
     winxime-server.exe
     MoqiLauncher.exe MoqiLaunch.exe MoqiIME.exe
+    ChsIME.exe
 ) do taskkill /IM %%P /F >nul 2>&1
+rem ChsIME.exe = Microsoft Pinyin host (respawned by ctfmon). Without killing it
+rem the ChsPinyin*.dat files stay open and del below fails silently.
+rem If the taskbar is in Chinese mode, also switch to ENG before rerunning.
 timeout /t 2 /nobreak >nul
 
 set "LL=%USERPROFILE%\AppData\LocalLow"
@@ -41,11 +45,14 @@ set FAIL=
 echo ==== 2/4 wipe user dictionaries + learning data ====
 
 echo   [01] Microsoft Pinyin (user dict pages + self-learning) ...
+rem Windows 10 22H2+/Win11 "new" IME writes the SAME artifacts with a _Beta
+rem suffix (ChsPinyinUDL_Beta.dat ...), so use globs instead of exact names.
+rem *.dat* also covers the .dat.bak backups - MS Pinyin keeps the previous
+rem copy there and will otherwise hand the learned words back on next start.
 del /f /q "%APPDATA%\Microsoft\InputMethod\Chs\UDP*.tmp" >nul 2>&1
-del /f /q "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyinUDL*.dat" >nul 2>&1
-del /f /q "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyinIH*.dat" >nul 2>&1
-del /f /q "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyinDeletedCands*.dat" >nul 2>&1
-del /f /q "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyinPinnedCands*.dat" >nul 2>&1
+del /f /q "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyin*UDL*.dat*" >nul 2>&1
+del /f /q "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyinIH*.dat*" >nul 2>&1
+del /f /q "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyin*Cands*.dat*" >nul 2>&1
 rd /s /q "%APPDATA%\Microsoft\InputMethod\Chs\OnlineRoaming" >nul 2>&1
 
 echo   [02] Sogou Pinyin 16.9 official ...
@@ -187,6 +194,8 @@ del /f /q "%LL%\PalmInput\Dict\Cate\Cate-*.pidic" >nul 2>&1
 
 echo ==== 3/4 verify key artifacts ====
 call :CHECK "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyinUDL.dat" "MS Pinyin UDL"
+call :CHECK "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyinUDL_Beta.dat" "MS Pinyin UDL beta"
+call :CHECK "%APPDATA%\Microsoft\InputMethod\Chs\ChsPinyinUDL.dat.bak" "MS Pinyin UDL backup"
 call :CHECK "%LL%\SogouPY\sgim_gd_usr.bin" "Sogou user dict"
 rem (x86) paths must NOT go through call :CHECK - CALL re-parses args and
 rem the ")" in (x86) breaks the parser ("was unexpected at this time")
