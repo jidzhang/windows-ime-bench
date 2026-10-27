@@ -154,3 +154,11 @@ top-1 **+1.70**、随机词对零回归，帕累托严格优于默认。配置�
 **内置建议**：带 nm67 的版本维持默认 999/300 不动；lite/无 gram 版内置 1.2/500；
 用户 %APPDATA%\Moqi\contextual_lift.json 永远可覆盖内置值。floor 刻度绑定
 zh-bigram.tsv 证据表（换表必重标），ratio 增益与否绑定 gram 状态（换万象需重扫）。
+
+## 附六：lts 安装包交付（2026-10-27 晨三）
+
+`Z:\dev\IME\MoqiIME\moqi-im-windows\installer\dist\moqi-im-windows-setup-lts-1.6.1.exe`
+（138.6MB = 1.6.1 程序 + zh-moqi-lts.gram 67,409,964B sha256 3e653e1f…）。
+构建：官方 build-installer.ps1 -GramPath（stage 引擎 rime.dll=装机版同款 7b799014），
+mixed_pair 维持内置默认 999/300（条件化结论：带 gram 版不调参）。覆盖安装会清掉
+安装目录旧大模型（含原 wanxiang-lts），auto 检测将唯一命中 zh-moqi-lts。
