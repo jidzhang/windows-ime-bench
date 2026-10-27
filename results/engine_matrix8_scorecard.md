@@ -273,3 +273,25 @@ Go 测试 `ok input_methods/rime 1.837s`；重编后端（stage MoqiIME.exe 17:3
 | 混拼 d3pairs225 | 79.11 | 78.22（176/225） | −0.89 |
 
 与扫参预测完全吻合，装机链路两 bug 闭环（auto 门槛 50MB + 罚分出厂预设 -6）。
+
+## 附十二：发版线收尾（2026-10-27 深夜）
+
+白盒验收通过后按发版标准补做的三件事：
+
+1. **五档后端统一**：此前只有 std(19:10)/wiki(19:11) 是新后端，lite/essay/wanxiang
+   仍是 16:5x 旧货（无 50MB 门槛、无 -6 预设）。已全部重打：
+   lite 21:24 / essay 21:27 / wanxiang 21:29 / std 21:31 / wiki 21:32。
+2. **清悬空引用**：产品不再随包 7MB `zh-moqi.gram`，但霜 schema 默认
+   `grammar/language: zh-moqi` 会每次部署报 `failed to load grammar database`。
+   已在 `moqi-ime/rime-frost/rime_frost.schema.yaml`（源码）与 stage 副本删除该默认
+   language（保留 non_collocation_penalty 注释）；装有大模型时仍由 local_behavior
+   生成的 patch 显式写入 language，行为不变。lite 档 ExcludeBuild 同步清掉已不存在的
+   zh-moqi.gram 项。
+3. **文档同步**：README 下载表三档→五档（lite/std/wiki/essay/wanxiang 各自体积与
+   适用人群，并注明"不带模型按形态命名、带模型按模型命名"）；PACKAGES.md 标题
+   四档→五档、门槛 50MB。
+
+**仍未闭合（不阻塞白盒，但阻塞"正式发版"口径）**：
+- 黑盒真机验证未做（需屏幕解锁）：TSF 链路、Go 层 mixed_pair 与真机混拼表现；
+- 四维回归（d1/d2/d4/d5）未跑；
+- `zh-bigram.tsv` 混源许可遗留（已披露，未整改）。
