@@ -207,3 +207,20 @@ mixed_pair 维持内置默认 999/300（条件化结论：带 gram 版不调参�
 词库同等条款+署名 gaboolic，审计通过**。定案：保留（性能 +1.41 真实分布最优小
 体积件、混拼伤害最小；命名与 zh-moqi-wiki 的相近性在 NOTICE 中说明，不改文件名
 ——frost schema 默认引用与产品内容哈希接管路径均绑定此名）。NOTICE.md 已补条目。
+
+## 附十：装机实测发现阈值 bug（2026-10-27 晚）
+
+用户装 setup-wiki-1.6.1/2 后白盒实测（快照安装目录 data 为 vendor，rime.dll 直调）：
+整句 55.00 / 词级 100 / 混拼 79.11 = **裸霜水平**，且日志
+`failed to load grammar database: zh-moqi`。
+
+根因：`minAutoGramBytes = 64 << 20`（67,108,864B），自训 zh-moqi-wiki.gram 为
+64,460,844B，**差 2,648,020 字节**未过线 → auto 检测跳过 → 生成 patch 无
+grammar/language 行 → 模型静默失效（安装成功但零收益）。此前所有白盒 59.17
+均是显式 patch 指定 language，掩盖了此问题。
+
+处置（用户拍板门槛降 50MB）：`grammar_model.go: minAutoGramBytes = 50 << 20`，
+Go 测试 `ok input_methods/rime 1.837s`；重编后端（stage MoqiIME.exe 17:38:54）
+后只重打 wiki 档：`setup-wiki-1.6.2.exe` 123.6MB @17:44。装后预期
+整句 59.17 / 词级 100 / 混拼 61.33（-4 罚分，与白盒一致）。
+教训：**产品级白盒必须走后模型 auto 检测链路，不能只测显式配置**。
