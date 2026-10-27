@@ -198,3 +198,12 @@ mixed_pair 维持内置默认 999/300（条件化结论：带 gram 版不调参�
 4. 附带发现：①罚分须按模型标定（小gram 最优 -6、wiki 最优 -4，差 1.6 点），
    产品后台校准机制正确；②emit-top 截顶路线证伪——wiki 模型价值在长尾，
    top-110 万截断版 d5 净负（工具 bug 曾使截顶从未生效，已修复并以行数验证）。
+
+## 附九：小 gram 溯源审计与保留定案（2026-10-27 午后）
+
+溯源链：frost README 明载"墨奇模型"= gaboolic/rime-build-grammar（作者自建，
+当前 release 无 zh-moqi 资产；amzxyz/RIME-LMDG 为 CC BY 4.0 但非此文件来源）；
+7MB 文件提交于 rime-frost（GPL-3.0）并由其分发——**产品经 frost 链获得，与白霜
+词库同等条款+署名 gaboolic，审计通过**。定案：保留（性能 +1.41 真实分布最优小
+体积件、混拼伤害最小；命名与 zh-moqi-wiki 的相近性在 NOTICE 中说明，不改文件名
+——frost schema 默认引用与产品内容哈希接管路径均绑定此名）。NOTICE.md 已补条目。
