@@ -152,3 +152,5 @@ Windows 语言列表里显示名称的子串，display 是报告里的名字）�
 **万象 63.33 > essay 58.33 > 无模型 54.17 = 自训 wiki 54.17**。
 自训 wiki 模型在产品栈零增益（引擎白盒里 +0.83 的结论已被推翻），
 详见 `results/native_stack_2026-10-27.md`。
+**五档安装建议与依据**：`docs/install_recommendation.md`（实测：标准版混拼最优、
+wanxiang 长句最强但混拼 −9.6、自训 wiki 档双维度同分暂无收益）。
