@@ -295,3 +295,21 @@ Go 测试 `ok input_methods/rime 1.837s`；重编后端（stage MoqiIME.exe 17:3
 - 黑盒真机验证未做（需屏幕解锁）：TSF 链路、Go 层 mixed_pair 与真机混拼表现；
 - 四维回归（d1/d2/d4/d5）未跑；
 - `zh-bigram.tsv` 混源许可遗留（已披露，未整改）。
+
+## 附十三：发版包装后终验（2026-10-27 深夜二）
+
+净装（清用户数据 + 覆盖安装 setup-wiki-1.6.2 @21:32，后端 19:06）后白盒：
+
+| 维度 | 无模型 | 装后 | Δ |
+|---|---|---|---|
+| 整句 zhihu120 | 55.00 | **55.83（67/120）** | +0.83 |
+| 整句复跑 | — | 55.83 | 0 diff |
+| 词级 words234 | 100 | 100 | 0 |
+| 混拼 d3pairs225 | 79.11 | 78.22（176/225） | −0.89 |
+
+附加验证（schema 改动回归）：
+- **无模型档**（stage 数据、无 gram）：日志 `failed to load grammar` 计数 **0**（悬空引用修复生效）；
+- **essay 档**（stage 数据 + essay gram + 产品等价 patch）：`use grammar: zh-hans-t-essay-bgw` 正常，decode_failed=0。
+
+结论：五档后端统一、配置链路正确、性能与预测一致，**白盒侧发版条件满足**；
+黑盒（TSF 真机 / Go 层 mixed_pair）与四维回归仍未做。
