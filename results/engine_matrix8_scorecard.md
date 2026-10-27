@@ -162,3 +162,15 @@ zh-bigram.tsv 证据表（换表必重标），ratio 增益与否绑定 gram 状
 构建：官方 build-installer.ps1 -GramPath（stage 引擎 rime.dll=装机版同款 7b799014），
 mixed_pair 维持内置默认 999/300（条件化结论：带 gram 版不调参）。覆盖安装会清掉
 安装目录旧大模型（含原 wanxiang-lts），auto 检测将唯一命中 zh-moqi-lts。
+
+## 附七：许可审计与 zh-moqi-wiki 定版（2026-10-27）
+
+- **15 源许可审计**：TED（CC BY-NC-ND 禁商用）、OpenSubtitles（版权未清权）、
+  Leipzig（仅研究）、News-Commentary（研究用途存疑）、知乎（平台条款，且实测零贡献）
+  全部剔除；**定版唯一源=中文维基百科（CC BY-SA 4.0，署名即可）**；
+- **性能代价为零**：整句 59.17 持平、词级 100 零回归、混拼 56.89→**61.33**
+  （反超 essay 60.00）——可疑源本为死重；模型 64.5MB/1291 万签名，双轮 0 diff；
+- 更名 zh-moqi-lts→**zh-moqi-wiki**（用户拍板）；v1（15 源 67MB）作废撤回；
+- 交付：`moqi-im-windows-setup-wiki-1.6.1.exe`（136.4MB，旧 lts 包已删）；
+  MoqiIME 仓 NOTICE.md 增许可作用域声明+模型条目+**zh-bigram.tsv 风险披露**
+  （重排证据表混源与 v1 同病，待以维基重建并重验 mixed_pair——唯一遗留整改项）。
