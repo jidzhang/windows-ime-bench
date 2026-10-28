@@ -70,7 +70,8 @@ gram 路径仍是两引擎唯一可见分歧面（与此前白盒 A/B 结论一�
 用户判据更新：万象/essay 臂全部停用，唯一评估对象为自训新模型
 `zh-newmoqi.gram`（12.7MB，sha256 `8d4f7acf…`；11 源训练=知乎域 3466 句×30 +
 news/leipzig×2 + subs/ted/wiki×7，205 万字符级搭配签名；管线全链路入库
-`engine/rime-schema-compare/scripts/gram/`，octagram 源码+工具+词典+重写 convert）。
+`engine/rime-schema-compare/scripts/gram/`（2026-10-28 已迁至 moqi-ime 仓 `tools/gram-train`），
+octagram 源码+工具+词典+重写 convert）。
 
 | zhihu120 整句 | 词级 words234 |
 |---|---|
