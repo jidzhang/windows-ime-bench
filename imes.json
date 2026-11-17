@@ -21,5 +21,11 @@
       "weasel"
     ],
     "display": "小狼毫0.17.4"
+  },
+  "zhongwen_pinyin": {
+    "patterns": [
+      "中文输入法"
+    ],
+    "display": "中文输入法(微软商店版)"
   }
 }
